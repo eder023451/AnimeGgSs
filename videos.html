@@ -3,81 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <title>Capítulos Made In Abyss</title>
-
     <style>
         body {
-            background-color: rgb(127, 140, 255);
-            font-family: Arial;
+            background-color: rgb(60, 59, 66);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 20px;
             text-align: center;
         }
 
-        /* Estilo para la portada en esta página */
+        .contenedor-principal {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
         .portada-mini {
-            width: 200px; /* Tamaño tipo miniatura */
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
+            width: 160px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            margin-bottom: 10px;
         }
 
-        video {
-            margin: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        /* Contenedor del Video Responsivo */
+        .reproductor-box {
+            position: relative;
+            padding-top: 56.25%; /* Relación de aspecto 16:9 */
+            margin: 20px 0;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
 
-        h1 {
+        .reproductor-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Lista de Botones */
+        .lista-episodios {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+
+        .btn-episodio {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-episodio:hover {
+            background-color: #fff;
             color: #333;
-            margin-top: 30px;
+            transform: translateY(-3px);
         }
 
-        h3 {
-            color: #fff;
-            background-color: rgba(0,0,0,0.2);
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 5px;
+        .btn-episodio.activo {
+            background-color: #ffcc00;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
         }
 
         .volver {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 35px;
             text-decoration: none;
             color: white;
-            background-color: #333;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            background-color: #222;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
         .volver:hover {
-            background-color: #575757;
+            background-color: #444;
         }
+
+        h1 { color: #333; margin-bottom: 5px; }
+        h3 { color: #fff; margin-bottom: 10px; }
     </style>
 </head>
-
 <body>
 
-<h1>Capítulos</h1>
+<div class="contenedor-principal">
+    <img src="p1.jfif" alt="Portada Made in Abyss" class="portada-mini">
+    <h1 id="texto-reproduciendo">Capítulo 1</h1>
 
-<!-- Insertamos la portada aquí -->
-<img src="p1.jfif" alt="Portada Made in Abyss" class="portada-mini">
-
-<div class="lista-capitulos">
-    
-    <!-- Capítulo 1 -->
-    <div class="video-item">
-        <h3>Capítulo 1</h3>
-        <!-- Usamos un iframe para que Drive gestione el reproductor -->
-        <iframe src="https://drive.google.com/file/d/1OD_TyVHJd2eGO9PquZOnljpHLV3SC0xP/preview" width="600" height="340" allow="autoplay"></iframe>
+    <!-- El reproductor que cambia el contenido -->
+    <div class="reproductor-box">
+        <iframe id="video-drive" src="https://drive.google.com/file/d/1OD_TyVHJd2eGO9PquZOnljpHLV3SC0xP/preview" allow="autoplay"></iframe>
     </div>
 
-    <!-- Capítulo 2 -->
-    <div class="video-item">
-        <h3>Capítulo 2</h3>
-        <iframe src="https://drive.google.com/file/d/1GpYpttJv-0lC19xv9MBazI5XaF8R4joT/preview" width="600" height="340" allow="autoplay"></iframe>
+    <h3>Selecciona un Episodio</h3>
+    <div class="lista-episodios">
+        <!-- Los IDs son exactamente los que enviaste -->
+        <button class="btn-episodio activo" onclick="cambiarEpisodio('1OD_TyVHJd2eGO9PquZOnljpHLV3SC0xP', 1, this)">1</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1GpYpttJv-0lC19xv9MBazI5XaF8R4joT', 2, this)">2</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1vY-_BVzK2PfzKOvRPlrxdCbBEIm97ONf', 3, this)">3</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1v28XvjrT_OiJRvyO3GWH9jYD3TqnwaKp', 4, this)">4</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1kt2r7ojn4LoT-ulyGZi3ckzP9f73TsIc', 5, this)">5</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1QOHX1KNbdHBMOkvtYvyX-pyhO1HemZH-', 6, this)">6</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('16yuwOQ0xcNA8pgm_4gnfVomKAQbHwIfi', 7, this)">7</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1TsLnB3a6UMXbRRCrmZlcvNxA-GBoW5X9', 8, this)">8</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1RiGpX60n3za3elZKLxYhRMBxk0-RzPio', 9, this)">9</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1v6BnTstKDskHyugZ2FtAEEjB2F2V-iMz', 10, this)">10</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('18DCZ1QKk7Rt4zE-bZWS6IocsTRm1h07m', 11, this)">11</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1npnoEONVLyQWvO1tJhzBOuMwWRsUa--L', 12, this)">12</button>
+        <button class="btn-episodio" onclick="cambiarEpisodio('1vCCOm-xc4qxVi7vhMmpmiHnwoK6384Dd', 13, this)">13</button>
     </div>
 
+    <a href="paginaanime.html" class="volver">⬅ Volver al Menú Principal</a>
 </div>
 
-</div>
+<script>
+    function cambiarEpisodio(id, numero, elemento) {
+        // Actualiza el video (formato preview para evitar errores de virus)[cite: 1]
+        const iframe = document.getElementById('video-drive');
+        iframe.src = `https://drive.google.com/file/d/${id}/preview`;
+
+        // Actualiza el título
+        document.getElementById('texto-reproduciendo').innerText = `Capítulo ${numero}`;
+
+        // Cambia el estilo del botón seleccionado
+        const botones = document.querySelectorAll('.btn-episodio');
+        botones.forEach(btn => btn.classList.remove('activo'));
+        elemento.classList.add('activo');
+
+        // Scroll suave hacia arriba para ver el video
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
