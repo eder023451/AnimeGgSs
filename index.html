@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Lista de Animes</title>
+    <link rel="icon" href="corazon.jpg" type="image/png">
+    <style>
+        body {
+            background-color: rgb(62, 62, 66);
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* Menú de navegación */
+        nav {
+            background-color: #333;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        /* Sección de Inicio y Cuadrícula */
+        section {
+            padding: 100px 20px 40px 20px;
+            text-align: center;
+        }
+
+        .grid-animes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        /* Tarjeta del Anime */
+        .anime-card {
+            background-color: #222;
+            padding: 10px;
+            border-radius: 12px;
+            width: 260px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .anime-card:hover {
+            transform: scale(1.05);
+            background-color: #444;
+        }
+
+        .anime-card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover; /* Ajusta la imagen sin deformarla */
+            border-radius: 8px;
+            display: block;
+        }
+
+        .anime-card figcaption {
+            color: white;
+            padding: 15px 0 5px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <audio id="musicaFondo" autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+</audio>
+
+<script>
+    // Esto ayuda a que la música empiece a sonar en cuanto el usuario interactúe con la página
+    document.addEventListener('click', function() {
+        var audio = document.getElementById('musicaFondo');
+        audio.play();
+    }, { once: true }); // Solo se ejecuta la primera vez que haces clic
+</script>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio">
+        <h1>Catálogo de Animes</h1>
+        <p>Toca la portada para ver los capítulos</p>
+        
+        <div class="grid-animes">
+            
+            <!-- TARJETA: Made in Abyss -->
+<a href="videos.html" class="anime-card">
+    <figure style="margin: 0;">
+        <!-- Usamos el nombre que ya funcionó: p1.jfif -->
+        <img src="p1.jfif" alt="Made in Abyss">
+        <figcaption>Made in Abyss</figcaption>
+    </figure>
+</a>
+
+            <!-- Aquí puedes añadir más animes copiando el bloque de arriba -->
+
+        </div>
+    </section>
+
+    <!-- Secciones adicionales -->
+    <section id="servicios"><h2>Servicios</h2></section>
+    <h1> Aqui subire animes que me vayan pidiendo sin ningun costo</h1>
+    <p>En contacto me podran decir cuales quieren , espero sea de su agrado</p>
+    <section id="productos"><h2>Productos</h2></section>
+    <h1>Hasta el momento solo tenego Made in Abyss</h1>
+    <p>Mas proximamente</p>
+    <section id="nosotros"><h2>Nosotros</h2></section>
+    <h1>Estoy creando esta pagina como un proyecto escolar</h1>
+    <p>Por si no se ve muy profesional</p>
+    <section id="contacto"><h2>Contacto</h2></section>
+    <h1>Aqui se podran comunicar conmigo</h1>
+    <p>Sugerencias aqui "arroxtp1@gmail.com"</p>
+
+</body>
+</html>
